@@ -1,22 +1,9 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[11]:
-
 
 import cv2
-
-
-# In[12]:
-
 
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades +'haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades +'haarcascade_eye.xml')
 smile_cascade = cv2.CascadeClassifier(cv2.data.haarcascades +'haarcascade_smile.xml')
-
-
-# In[13]:
-
 
 def detect(gray, frame):
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
@@ -29,10 +16,6 @@ def detect(gray, frame):
         for (sx, sy, sw, sh) in smiles:
             cv2.rectangle(roi_color, (sx, sy), ((sx + sw), (sy + sh)), (0, 0, 255), 2)
     return frame
-
-
-# In[14]:
-
 
 video_capture = cv2.VideoCapture(0)
 while video_capture.isOpened():
@@ -55,16 +38,3 @@ while video_capture.isOpened():
 # Release the capture once all the processing is done.
 video_capture.release()
 cv2.destroyAllWindows()
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
